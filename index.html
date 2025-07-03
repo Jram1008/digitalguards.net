@@ -67,7 +67,7 @@
   <h2 style="color: #2c3e50; margin-bottom: 10px;">Join DigitalGuards CyberSec</h2>
   <p>Your Reliable Partner in Data Security.</p>
 
-  <form class="join-form" action="https://formspree.io/f/xrbkdldz" method="POST" style="margin-top: 15px;">
+  <form id="join-form" class="join-form" action="https://formspree.io/f/xrbkdldz" method="POST" style="margin-top: 15px;">
     
     <div style="background: #fff; border: 1px solid #c0ccda; border-radius: 3px; margin: 0.5rem 0; width: 100%;">
       <input maxlength="200" type="text" name="name" autocomplete="off" placeholder="Add your first name" required 
@@ -87,7 +87,43 @@
     </div>
 
   </form>
+
+  <div id="form-message" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
+    Thank you for joining us!
+  </div>
 </div>
+
+<script>
+document.getElementById("join-form").addEventListener("submit", function(event) {
+  event.preventDefault(); 
+  const form = this;
+  const messageDiv = document.getElementById("form-message");
+
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      form.reset(); 
+      messageDiv.style.display = 'block';
+      messageDiv.style.color = 'green';
+      messageDiv.textContent = 'Thank you for joining us!';
+    } else {
+      messageDiv.style.display = 'block';
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'Oops! There was a problem submitting your form.';
+    }
+  }).catch(error => {
+    messageDiv.style.display = 'block';
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = 'Oops! There was a problem submitting your form.';
+  });
+});
+</script>
+
 
 
 
