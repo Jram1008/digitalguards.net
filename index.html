@@ -67,8 +67,8 @@
 <h2 style="color: #2c3e50; margin-bottom: 10px;">Join DigitalGuards CyberSec</h2>	 
   <form class="join-form" action="https://formspree.io/f/xrbkdldz"
   method="POST">
-    <input type="text" name="name" placeholder="Add your first name" required />
-    <input type="email" name="email" placeholder="Add your business email" required />
+    <input maxlength="200" type="text" name="name" autocomplete="off" placeholder="Add your first name" data-required="true" required />
+    <input maxlength="200" type="email" name="email" autocomplete="off" placeholder="Add your business email" data-required="true" required />
     <button type="submit">submit</button>
   </form>
 
@@ -115,9 +115,9 @@
 	</div>
 
 <footer>
-	<h2 style="color: #fff; margin-bottom: 10px;">About DigitalGuards</h2>
+	<h2 style="color: #fff; max-width: 400px; margin: 20px auto; margin-bottom: 10px;">About DigitalGuards</h2>
 
-	<p style="color: #fff; font-size: 16px; line-height: 1.6; margin: 0;">
+	<p style="color: #fff; max-width: 400px; margin: 20px auto; font-size: 16px; line-height: 1.6; margin: 0;">
 		DigitalGuards Cybersec LLP is a trusted cybersecurity partner, delivering reliable protection, thorough audits, and expert advisory services.
 		With deep industry knowledge and experience, we help businesses stay ahead of evolving cyber threats.
 	</p>
