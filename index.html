@@ -22,8 +22,8 @@
   <img src="Images/logo.png" alt="DigitalGuards Logo" />
   <nav>
     <a href="#services">Services</a>
+    <a href="#openJoin">Join</a>
     <a href="#contact">Contact Us</a>
-	<a href="#join">Join</a>
 
   </nav>
 </header>
@@ -63,65 +63,94 @@
   </div>
 </section>
 
-<div id="join" style="max-width: 300px; margin: 50px auto; border: 1px solid #ccc; background-color: #f5f7fa; font-family: Arial, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; border-radius: 5px; text-align: center;">
-  <h2 style="color: #2c3e50; margin-bottom: 10px;">Join DigitalGuards CyberSec</h2>
-  <p>Your Reliable Partner in Data Security.</p>
+<!-- Popup Overlay & Form Container -->
+<div id="join-popup" class="popup-overlay">
+  <div class="popup-content">
 
-  <form id="join-form" class="join-form" action="https://formspree.io/f/xrbkdldz" method="POST" style="margin-top: 15px;">
-    
-    <div style="background: #fff; border: 1px solid #c0ccda; border-radius: 3px; margin: 0.5rem 0; width: 100%;">
-      <input maxlength="200" type="text" name="name" autocomplete="off" placeholder="Add your first name" required 
-             style="border: none; outline: none; width: 100%; padding: 12px; font-size: 16px; box-sizing: border-box;" />
+    <!-- Close Button -->
+    <span class="close-btn" id="closeJoin">&times;</span>
+
+    <!-- Your Join Form -->
+    <div id="join" style="max-width: 300px; margin: auto; font-family: Arial, sans-serif; text-align: center;">
+      <h2 style="color: #2c3e50; margin-bottom: 10px;">Join DigitalGuards CyberSec</h2>
+      <p>Your Reliable Partner.</p>
+
+      <form id="join-form" action="https://formspree.io/f/xrbkdldz" method="POST" style="margin-top: 15px;">
+        <div style="background: #fff; border: 1px solid #c0ccda; border-radius: 3px; margin: 0.5rem 0; width: 100%;">
+          <input maxlength="200" type="text" name="name" placeholder="Add your first name" required
+            style="border: none; outline: none; width: 100%; padding: 12px; font-size: 16px; box-sizing: border-box;" />
+        </div>
+
+        <div style="background: #fff; border: 1px solid #c0ccda; border-radius: 3px; margin: 0.5rem 0; width: 100%;">
+          <input maxlength="200" type="email" name="email" placeholder="Add your business email" required
+            style="border: none; outline: none; width: 100%; padding: 12px; font-size: 16px; box-sizing: border-box;" />
+        </div>
+
+        <div style="margin-top: 10px;">
+          <button type="submit"
+            style="background-color: #2c3e50; color: #fff; padding: 12px 20px; border: none; border-radius: 3px; cursor: pointer; font-size: 16px; width: 100%;">
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <div id="form-message" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
+        Thank you for joining us!
+      </div>
     </div>
 
-    <div style="background: #fff; border: 1px solid #c0ccda; border-radius: 3px; margin: 0.5rem 0; width: 100%;">
-      <input maxlength="200" type="email" name="email" autocomplete="off" placeholder="Add your business email" required 
-             style="border: none; outline: none; width: 100%; padding: 12px; font-size: 16px; box-sizing: border-box;" />
-    </div>
-
-    <div style="margin-top: 10px;">
-      <button type="submit" 
-              style="background-color: #2c3e50; color: #fff; padding: 12px 20px; border: none; border-radius: 3px; cursor: pointer; font-size: 16px; width: 100%;">
-        Submit
-      </button>
-    </div>
-
-  </form>
-
-  <div id="form-message" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
-    Thank you for joining us!
   </div>
 </div>
 
+<!-- Inline JavaScript -->
 <script>
-document.getElementById("join-form").addEventListener("submit", function(event) {
-  event.preventDefault(); 
-  const form = this;
-  const messageDiv = document.getElementById("form-message");
+  const openBtn = document.getElementById("openJoin");
+  const closeBtn = document.getElementById("closeJoin");
+  const popup = document.getElementById("join-popup");
 
-  fetch(form.action, {
-    method: form.method,
-    body: new FormData(form),
-    headers: {
-      'Accept': 'application/json'
+  openBtn.addEventListener("click", () => {
+    popup.style.display = "flex";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
     }
-  }).then(response => {
-    if (response.ok) {
-      form.reset(); 
-      messageDiv.style.display = 'block';
-      messageDiv.style.color = 'green';
-      messageDiv.textContent = 'Thank you for joining us!';
-    } else {
+  });
+
+  // Form submission handler (same as yours)
+  document.getElementById("join-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const form = this;
+    const messageDiv = document.getElementById("form-message");
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        messageDiv.style.display = 'block';
+        messageDiv.style.color = 'green';
+        messageDiv.textContent = 'Thank you for joining us!';
+      } else {
+        messageDiv.style.display = 'block';
+        messageDiv.style.color = 'red';
+        messageDiv.textContent = 'Oops! There was a problem submitting your form.';
+      }
+    }).catch(error => {
       messageDiv.style.display = 'block';
       messageDiv.style.color = 'red';
       messageDiv.textContent = 'Oops! There was a problem submitting your form.';
-    }
-  }).catch(error => {
-    messageDiv.style.display = 'block';
-    messageDiv.style.color = 'red';
-    messageDiv.textContent = 'Oops! There was a problem submitting your form.';
+    });
   });
-});
 </script>
 
 
