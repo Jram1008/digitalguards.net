@@ -122,6 +122,17 @@
     }
   });
 
+window.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("popup") === "join") {
+    const popup = document.getElementById("join-popup");
+    if (popup) {
+      popup.style.display = "flex";
+      window.history.replaceState({}, document.title, window.location.pathname); // optional: remove ?popup=join
+    }
+  }
+});
+
   // Form submission handler (same as yours)
   document.getElementById("join-form").addEventListener("submit", function (event) {
     event.preventDefault();
