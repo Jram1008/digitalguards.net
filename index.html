@@ -248,6 +248,26 @@ if (joinForm) {
     });
   });
 }
+	window.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  
+  if (params.get("popup") === "quote") {
+    const quotePopup = document.getElementById("quote-popup");
+    if (quotePopup) {
+      quotePopup.style.display = "flex";
+      window.history.replaceState({}, document.title, window.location.pathname); // optional cleanup
+    }
+  }
+
+  if (params.get("popup") === "join") {
+    const joinPopup = document.getElementById("join-popup");
+    if (joinPopup) {
+      joinPopup.style.display = "flex";
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+});
+
 </script>
 
 
