@@ -204,3 +204,28 @@ footer {
       font-size: 24px;
       cursor: pointer;
     }
+.quote-btn {
+  display: inline-block;
+  background: linear-gradient(145deg, #003366, #00bfff);
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px #002244;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.quote-btn:hover {
+  background: linear-gradient(145deg, #00bfff, #003366);
+  box-shadow: 0 8px #001122;
+}
+
+.quote-btn:active {
+  box-shadow: 0 2px #001122;
+  transform: translateY(4px);
+}
