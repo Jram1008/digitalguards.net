@@ -4,16 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DigitalGuards Cybersec LLP</title>
-<meta name="description" content="Get enterprise-grade firewall solutions from DigitalGuards Cybersec LLP. We protect your network with real-time monitoring and expert configuration.">
-<meta name="keywords" content="cybersecurity, firewall solutions, network protection, cyber audit, IT security India">
-<meta name="author" content="DigitalGuards Cybersec LLP">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta property="og:title" content="Firewall Solutions | DigitalGuards" />
-<meta property="og:description" content="Firewall setup, monitoring, and threat prevention from DigitalGuards Cybersec LLP." />
-<meta property="og:image" content="https://digitalguards.in/images/firewall.jpg" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://digitalguards.in/services/firewall.html" />
-<link rel="canonical" href="https://digitalguards.in/services/firewall.html" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -104,7 +94,82 @@
 
   </div>
 </div>
+<!-- Quote Popup -->
+<div id="quote-popup" class="popup-overlay">
+  <div class="popup-content">
+    <span id="closeQuote" class="close-btn">&times;</span>
+    <h2 style="text-align: center;">Request a Custom Quote</h2>
+    <form id="quote-form" action="https://formspree.io/f/xrbkdldz" method="POST">
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required>
 
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="service">Service Interested In</label>
+      <select name="service" id="service" required>
+        <option value="">-- Select --</option>
+        <option value="Firewall Setup">Firewall Setup</option>
+        <option value="Penetration Testing">Penetration Testing</option>
+        <option value="Network Audit">Network Audit</option>
+        <option value="Endpoint Protection">Endpoint Protection</option>
+        <option value="SOC/SIEM">SOC & SIEM</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="message">Additional Details</label>
+      <textarea name="message" id="message" rows="4"></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</div>
+
+  <script>
+  const quotePopup = document.getElementById("quote-popup");
+  const closeQuote = document.getElementById("closeQuote");
+
+  document.getElementById("openQuote").addEventListener("click", function(e) {
+    e.preventDefault();
+    quotePopup.style.display = "flex";
+  });
+
+  document.getElementById("openQuote2").addEventListener("click", function(e) {
+    e.preventDefault();
+    quotePopup.style.display = "flex";
+  });
+
+  closeQuote.addEventListener("click", function() {
+    quotePopup.style.display = "none";
+  });
+
+  window.addEventListener("click", function(e) {
+    if (e.target === quotePopup) {
+      quotePopup.style.display = "none";
+    }
+  });
+
+  // Handle form submit: clear fields and close popup
+  document.getElementById("quote-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const form = this;
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        quotePopup.style.display = "none";
+        alert("Thank you! Your quote request has been submitted.");
+      } else {
+        alert("There was a problem submitting your request. Please try again.");
+      }
+    }).catch(error => {
+      alert("There was a network error. Please try again.");
+    });
+  });
+</script>
 <!-- Inline JavaScript -->
 <script>
   const openBtn = document.getElementById("openJoin");
