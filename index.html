@@ -130,21 +130,26 @@
 </div>
 	
 <!-- Inline JavaScript -->
-  <script>
-  const quotePopup = document.getElementById("quote-popup");
-  const closeQuote = document.getElementById("closeQuote");
+<script>
+// ----------- QUOTE POPUP HANDLER ------------
+const quotePopup = document.getElementById("quote-popup");
+const closeQuote = document.getElementById("closeQuote");
 
-  document.getElementById("openQuote").addEventListener("click", function(e) {
-    e.preventDefault();
-    quotePopup.style.display = "flex";
-  });
+// Handle open buttons safely
+const quoteTriggers = ["openQuote", "openQuote2"];
+quoteTriggers.forEach(id => {
+  const btn = document.getElementById(id);
+  if (btn && quotePopup) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      quotePopup.style.display = "flex";
+    });
+  }
+});
 
-  document.getElementById("openQuote2").addEventListener("click", function(e) {
-    e.preventDefault();
-    quotePopup.style.display = "flex";
-  });
-
-  closeQuote.addEventListener("click", function() {
+// Close quote popup
+if (closeQuote && quotePopup) {
+  closeQuote.addEventListener("click", () => {
     quotePopup.style.display = "none";
   });
 
@@ -153,9 +158,12 @@
       quotePopup.style.display = "none";
     }
   });
+}
 
-  // Handle form submit: clear fields and close popup
-  document.getElementById("quote-form").addEventListener("submit", function(e) {
+// Handle quote form submission
+const quoteForm = document.getElementById("quote-form");
+if (quoteForm && quotePopup) {
+  quoteForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const form = this;
     fetch(form.action, {
@@ -170,41 +178,48 @@
       } else {
         alert("There was a problem submitting your request. Please try again.");
       }
-    }).catch(error => {
+    }).catch(() => {
       alert("There was a network error. Please try again.");
     });
   });
-  const openBtn = document.getElementById("openJoin");
-  const closeBtn = document.getElementById("closeJoin");
-  const popup = document.getElementById("join-popup");
+}
 
-  openBtn.addEventListener("click", () => {
-    popup.style.display = "flex";
+// ----------- JOIN POPUP HANDLER ------------
+const openJoinBtn = document.getElementById("openJoin");
+const closeJoinBtn = document.getElementById("closeJoin");
+const joinPopup = document.getElementById("join-popup");
+
+if (openJoinBtn && joinPopup) {
+  openJoinBtn.addEventListener("click", () => {
+    joinPopup.style.display = "flex";
   });
+}
 
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
+if (closeJoinBtn && joinPopup) {
+  closeJoinBtn.addEventListener("click", () => {
+    joinPopup.style.display = "none";
   });
 
   window.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.style.display = "none";
+    if (e.target === joinPopup) {
+      joinPopup.style.display = "none";
     }
   });
+}
 
+// Auto-open join popup via ?popup=join
 window.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
-  if (params.get("popup") === "join") {
-    const popup = document.getElementById("join-popup");
-    if (popup) {
-      popup.style.display = "flex";
-      window.history.replaceState({}, document.title, window.location.pathname); // optional: remove ?popup=join
-    }
+  if (params.get("popup") === "join" && joinPopup) {
+    joinPopup.style.display = "flex";
+    window.history.replaceState({}, document.title, window.location.pathname);
   }
 });
 
-  // Form submission handler (same as yours)
-  document.getElementById("join-form").addEventListener("submit", function (event) {
+// Handle join form submission
+const joinForm = document.getElementById("join-form");
+if (joinForm) {
+  joinForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const form = this;
     const messageDiv = document.getElementById("form-message");
@@ -226,12 +241,13 @@ window.addEventListener("DOMContentLoaded", function () {
         messageDiv.style.color = 'red';
         messageDiv.textContent = 'Oops! There was a problem submitting your form.';
       }
-    }).catch(error => {
+    }).catch(() => {
       messageDiv.style.display = 'block';
       messageDiv.style.color = 'red';
       messageDiv.textContent = 'Oops! There was a problem submitting your form.';
     });
   });
+}
 </script>
 
 
