@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.digitalguardscybersec.com/</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Services Page -->
+  <url>
+    <loc>https://www.digitalguardscybersec.com/services/endpoint.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.digitalguardscybersec.com/services/audit.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://www.digitalguardscybersec.com/services/firewall.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://www.digitalguardscybersec.com/services/pentest.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://www.digitalguardscybersec.com/services/cloud.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://www.digitalguardscybersec.com/services/soc-siem.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- About Page -->
+  <url>
+    <loc>https://www.digitalguardscybersec.com/aboutus.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Contact Page -->
+  <url>
+    <loc>https://www.digitalguardscybersec.com/contact</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
